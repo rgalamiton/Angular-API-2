@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { IBillboard } from '../../billboard';
 import { Observable } from '../../../../node_modules/rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,31 +18,17 @@ export class BboardService {
   
   constructor(private http: HttpClient) { }
 
-  postBillboard(emp : Bboard): Observable<Bboard>{
-    var body = JSON.stringify(emp);
-    var headerOptions = new Headers({ 'Content-Type': 'application/json'});
-    var requestOptions = new RequestOptions({ method : RequestMethod.Post, headers : headerOptions });
-    const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json',
-          'Authorization': 'my-auth-token'
-        })
-    };
-    
-    return this.http.post<Bboard>(this._url, body, httpOptions);
-
-  }
-
     /** POST: add a new hero to the database */
   postBboard (data: Bboard): Observable<Bboard> {
+    
+    var body = JSON.stringify(data);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'my-auth-token'
       })
-  };
-    return this.http.post<Bboard>(this._url, data, httpOptions)
-      .pipe();
+    };
+    return this.http.post<Bboard>(this._url, body, httpOptions);
   }
 }
 

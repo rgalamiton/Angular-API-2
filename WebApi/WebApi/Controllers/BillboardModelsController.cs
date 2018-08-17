@@ -9,9 +9,12 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApi.Models;
+using System.Web.Http.Cors;
 
 namespace WebApi.Controllers
 {
+    //[EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+
     public class BillboardModelsController : ApiController
     {
         private WebApiContext db = new WebApiContext();

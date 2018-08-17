@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 import {BboardService} from '../shared/bboard.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bboard',
@@ -10,7 +11,7 @@ import {BboardService} from '../shared/bboard.service';
 })
 export class BboardComponent implements OnInit {
 
-  constructor( private bboardService : BboardService) { }
+  constructor( private bboardService: BboardService, private toastr: ToastrService) { }
 
   ngOnInit() {
     
@@ -29,8 +30,9 @@ export class BboardComponent implements OnInit {
   }
   onSubmit(form : NgForm){
     this.bboardService.postBboard(form.value)
-    .subscribe( data => {
+    .subscribe( emp => {
       this.resetForm(form);
+      this.toastr.success('New Record Added Successfully!', 'New Billboard');
     })
   }
 }

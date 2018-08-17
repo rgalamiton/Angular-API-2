@@ -9,6 +9,7 @@ import { CreateComponent } from './create/create.component';
 import { BillboardComponent } from './billboard/billboard.component';
 import { BboardComponent } from './billboard/bboard/bboard.component';
 import { BboardListComponent } from './billboard/bboard-list/bboard-list.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BboardListComponent } from './billboard/bboard-list/bboard-list.compone
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
